@@ -1,0 +1,7 @@
+<div class="flex jastify-between p-2 rounded-lg {{if @isActive "bg-violet-500 text-white"}}">
+  <div class="flex flex-1 w-64  jastify-center items-center">
+    <p class="text-white mr-2"><AppFolderIcon @isActive={{@isActive}}/></p>
+    <p>{{@level.title}}</p>
+  </div>
+  <div>{{@progres}}</div>
+</div>

@@ -1,0 +1,41 @@
+services:
+
+  db:
+    image: postgres:16
+    container_name: db
+    restart: always
+    tty: true
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: vocabulary
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - vocabulary-data:/var/lib/postgresql/data
+
+
+  api:
+    build:
+      context: ./api
+      dockerfile: ../docker/api.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start:dev
+
+  client:
+    build:
+      context: ./client
+      dockerfile: ../docker/client.Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm start
+
+volumes:
+  vocabulary-data:

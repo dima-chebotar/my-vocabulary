@@ -1,0 +1,61 @@
+<main class="mx-auto p-4">
+  <div class="flex">
+    <div class="w-1/4 border-r border-slate-300 p-2">
+      <h3 class="mb-3">Рівні</h3>
+      <div>
+        <ul>
+          {{#each @model.levels as |level index|}}
+            {{#if (isIncludes this.levels level.id)}}
+              <li {{on "click" (fn this.changeLevel index)}}
+                class="cursor-pointer">
+                <Level @level={{level}}
+                       @isActive={{this.isActive index this.activeLevelIndex}}
+                       @progres={{userProgres level.topics this.complitedTopics}}
+                />
+              </li>
+            {{else}}
+              <li class="opacity-50">
+                <Level @level={{level}}
+                       @isActive={{false}}
+                       @progres={{userProgres level.topics this.complitedTopics}}
+                />
+              </li>
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="w-1/4 border-r border-slate-300 p-2">
+      <h3 class="mb-3">Теми</h3>
+      <ul>
+        {{#each this.activeTopics as |topic index|}}
+          {{#if (isIncludes this.topics topic.id)}}
+            <li {{on "click" (fn this.changeTopic index)}}
+              class="cursor-pointer">
+              <Topic @topic={{topic}}
+                     @isActive={{this.isActive index this.activeTopicIndex}}
+                     @isHideIcon={{false}}
+              />
+            </li>
+          {{else}}
+            <li class="opacity-50">
+              <Topic @topic={{topic}}
+                     @isActive={{this.isActive index this.activeTopicIndex}}
+                     @isHideIcon={{true}}
+              />
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="w-full">
+      <ul>
+        {{#each this.activeWords as |word|}}
+          <li class="border-b border-slate-300 p-2">
+            <Word @word={{word}} />
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</main>

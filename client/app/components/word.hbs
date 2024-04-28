@@ -1,0 +1,17 @@
+<div class="flex justify-between p-2">
+  <div class="flex items-center">
+    <div class="mr-2">
+      <img class="word-imd" src="{{@word.image}}" alt="img"/>
+    </div>
+    <div>
+      <p class="font-semibold">{{@word.word}}</p>
+      <div class="text-sm flex text-slate-400">
+        <p class="mr-2">{{get @word.translationWords "0.ua"}}</p>
+        <p>{{get @word.translationWords "0.es"}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="cursor-pointer">
+    <EuiIcon @type='play'/>
+  </div>
+</div>

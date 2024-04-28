@@ -46,7 +46,7 @@ You can launch the application. Execute the following command:
     make fresh
   ```
 
-This will start the application in development mode. Open your browser and go to [http://localhost:3001](http://localhost:3001) to view the application.
+This will start the application in development mode. Open your browser and go to [http://localhost:4200/users/1](http://localhost:4200/users/1) to view the application.
 
 ## Usage
 
